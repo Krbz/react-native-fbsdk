@@ -20,34 +20,22 @@
 
 package com.facebook.reactnative.androidsdk;
 
-import android.util.Log;
+import android.content.Intent;
 
-import com.facebook.react.bridge.ReadableMap;
-import com.facebook.react.uimanager.annotations.ReactProp;
-import com.facebook.react.uimanager.SimpleViewManager;
-import com.facebook.react.uimanager.ThemedReactContext;
-import com.facebook.share.model.ShareContent;
-import com.facebook.share.widget.SendButton;
+import com.facebook.CallbackManager;
+import com.facebook.react.bridge.ReactApplicationContext;
+import com.facebook.react.bridge.ReactContextBaseJavaModule;
 
-public class FBSendButtonManager extends SimpleViewManager<SendButton> {
+public abstract class FBSDKDialogBaseJavaModule extends ReactContextBaseJavaModule {
 
-    public static final String REACT_CLASS = "RCTFBSendButton";
+    private CallbackManager mCallbackManager;
 
-    @Override
-    public String getName() {
-        return REACT_CLASS;
+    protected CallbackManager getCallbackManager()  {
+        return mCallbackManager;
     }
 
-    @Override
-    protected SendButton createViewInstance(ThemedReactContext reactContext) {
-        return new SendButton(reactContext);
-    }
-
-    @ReactProp(name = "shareContent")
-    public void setShareContent(SendButton sendButton, ReadableMap shareContentMap) {
-        ShareContent shareContent = Utility.buildShareContent(shareContentMap);
-        if (shareContent != null) {
-            sendButton.setShareContent(shareContent);
-        }
+    protected FBSDKDialogBaseJavaModule(ReactApplicationContext reactContext, CallbackManager callbackManager) {
+        super(reactContext);
+        mCallbackManager = callbackManager;
     }
 }

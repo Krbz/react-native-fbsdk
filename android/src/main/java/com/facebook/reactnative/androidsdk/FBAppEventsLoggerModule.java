@@ -20,7 +20,7 @@
 
 package com.facebook.reactnative.androidsdk;
 
-import androidx.annotation.Nullable;
+import android.support.annotation.Nullable;
 
 import com.facebook.appevents.AppEventsConstants;
 import com.facebook.appevents.AppEventsLogger;
@@ -29,7 +29,6 @@ import com.facebook.react.bridge.ReactApplicationContext;
 import com.facebook.react.bridge.ReactContextBaseJavaModule;
 import com.facebook.react.bridge.ReactMethod;
 import com.facebook.react.bridge.ReadableMap;
-import com.facebook.react.module.annotations.ReactModule;
 
 import java.math.BigDecimal;
 import java.util.Currency;
@@ -103,10 +102,7 @@ import java.util.Currency;
  * </ul>
  * </p>
  */
-@ReactModule(name = FBAppEventsLoggerModule.NAME)
 public class FBAppEventsLoggerModule extends ReactContextBaseJavaModule {
-
-    public static final String NAME = "FBAppEventsLogger";
 
     private AppEventsLogger mAppEventLogger;
     private ReactApplicationContext mReactContext;
@@ -123,7 +119,7 @@ public class FBAppEventsLoggerModule extends ReactContextBaseJavaModule {
 
     @Override
     public String getName() {
-        return NAME;
+        return "FBAppEventsLogger";
     }
 
     /**

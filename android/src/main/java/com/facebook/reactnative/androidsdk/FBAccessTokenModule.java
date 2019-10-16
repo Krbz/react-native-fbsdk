@@ -30,22 +30,18 @@ import com.facebook.react.bridge.ReactApplicationContext;
 import com.facebook.react.bridge.ReactContextBaseJavaModule;
 import com.facebook.react.bridge.ReactMethod;
 import com.facebook.react.bridge.ReadableMap;
-import com.facebook.react.module.annotations.ReactModule;
 
 /**
  * This is a {@link NativeModule} that allows JS to use AcessToken in Facebook Android SDK.
  */
-@ReactModule(name = FBAccessTokenModule.NAME)
-public class FBAccessTokenModule extends ReactContextBaseJavaModule {
-
-    public static final String NAME = "FBAccessToken";
+public class FBAccessTokenModule extends ReactContextBaseJavaModule{
 
     public FBAccessTokenModule(ReactApplicationContext reactContext) {
         super(reactContext);
     }
 
     public String getName() {
-        return NAME;
+        return "FBAccessToken";
     }
 
     /**

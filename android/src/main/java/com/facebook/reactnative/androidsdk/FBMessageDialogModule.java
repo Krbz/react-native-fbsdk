@@ -20,22 +20,23 @@
 
 package com.facebook.reactnative.androidsdk;
 
+import android.content.Intent;
+import android.util.Log;
+
+import com.facebook.CallbackManager;
 import com.facebook.react.bridge.Arguments;
 import com.facebook.react.bridge.Promise;
 import com.facebook.react.bridge.ReactApplicationContext;
 import com.facebook.react.bridge.ReactMethod;
 import com.facebook.react.bridge.ReadableMap;
 import com.facebook.react.bridge.WritableMap;
-import com.facebook.react.module.annotations.ReactModule;
 import com.facebook.share.model.ShareContent;
 import com.facebook.share.widget.MessageDialog;
 
 /**
  * Provides functionality to send content via the Facebook Message Dialog
  */
-@ReactModule(name = FBMessageDialogModule.NAME)
-public class FBMessageDialogModule extends FBSDKCallbackManagerBaseJavaModule {
-    public static final String NAME = "FBMessageDialog";
+public class FBMessageDialogModule extends FBSDKDialogBaseJavaModule {
 
     private class MessageDialogCallback extends ReactNativeFacebookSDKCallback<MessageDialog.Result> {
 
@@ -56,13 +57,13 @@ public class FBMessageDialogModule extends FBSDKCallbackManagerBaseJavaModule {
 
     private boolean mShouldFailOnDataError;
 
-    public FBMessageDialogModule(ReactApplicationContext reactContext, FBActivityEventListener activityEventListener) {
-        super(reactContext, activityEventListener);
+    public FBMessageDialogModule(ReactApplicationContext reactContext, CallbackManager callbackManager) {
+        super(reactContext, callbackManager);
     }
 
     @Override
     public String getName() {
-        return NAME;
+        return "FBMessageDialog";
     }
 
     /**

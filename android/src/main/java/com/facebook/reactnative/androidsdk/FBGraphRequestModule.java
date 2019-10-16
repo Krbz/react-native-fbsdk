@@ -39,7 +39,6 @@ import com.facebook.react.bridge.ReadableMap;
 import com.facebook.react.bridge.ReadableMapKeySetIterator;
 import com.facebook.react.bridge.WritableArray;
 import com.facebook.react.bridge.WritableMap;
-import com.facebook.react.module.annotations.ReactModule;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -52,10 +51,7 @@ import java.util.Iterator;
  * FBGraphRequestModule holds a list of request objects and send them to Facebook in a single
  * round-trip.
  */
-@ReactModule(name = FBGraphRequestModule.NAME)
 public class FBGraphRequestModule extends ReactContextBaseJavaModule {
-    public static final String NAME = "FBGraphRequest";
-
     private SparseArray<WritableMap> mResponses;
 
     private class GraphRequestBatchCallback implements GraphRequestBatch.Callback {
@@ -103,7 +99,7 @@ public class FBGraphRequestModule extends ReactContextBaseJavaModule {
 
     @Override
     public String getName() {
-        return NAME;
+        return "FBGraphRequest";
     }
 
     /**
